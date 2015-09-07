@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "backend for serving photos",
   "dependencies": {
+    "body-parser": "^1.13.3",
     "express": "^4.13.3"
   },
   "devDependencies": {
