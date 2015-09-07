@@ -6,6 +6,9 @@ var path    = require('path');
 
 // Routes
 var routes  = require('./../routes/index');
+var upload  = require('./../routes/upload');
+var list  = require('./../routes/list');
+var view  = require('./../routes/view');
 
 
 app.set('views', path.join(__dirname, '../client/www'));
@@ -16,6 +19,12 @@ app.use(express.static(path.join(__dirname, '../client/www')));
 
 
 app.use('/', routes);
+
+// Routing
+app.use('/upload', upload);
+app.use('/list', list);
+app.use('/view', view);
+
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
