@@ -4,5 +4,8 @@
   "description": "backend for serving photos",
   "dependencies": {
     "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "jade": "^1.11.0"
   }
 }
