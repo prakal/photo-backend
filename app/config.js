@@ -12,7 +12,7 @@ db.knex.schema.hasTable('photos').then(function(exists) {
     db.knex.schema.createTable('photos', function (table) {
       //normal stuff
       table.increments('id').primary();
-      table.string('image_url', 100).unique();//.notNullable();
+      table.string('image_url', 255).unique();//.notNullable();
       table.integer('user_id');//.notNullable();
       table.integer('group_id');//.notNullable();
       table.integer('views').defaultTo(0);//start at zero;
