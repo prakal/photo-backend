@@ -1,0 +1,8 @@
+{
+  "name": "photo-backend",
+  "version": "0.0.1",
+  "description": "backend for serving photos",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
