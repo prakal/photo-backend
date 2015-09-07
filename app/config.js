@@ -15,7 +15,7 @@ db.knex.schema.hasTable('photos').then(function(exists) {
       table.string('image_url', 100).unique();//.notNullable();
       table.integer('user_id');//.notNullable();
       table.integer('group_id');//.notNullable();
-      table.integer('views');//.notNullable();
+      table.integer('views').defaultTo(0);//start at zero;
       table.timestamps();
     }).then(function (table) {
       console.log('Created the table:', table);
