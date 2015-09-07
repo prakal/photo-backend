@@ -1,8 +1,15 @@
 var express = require('express');
 var http 	= require('http');
 var path    = require('path');
+var bodyParser = require('body-parser')
 var app 	= express();
 var path    = require('path');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // Routes
 var routes  = require('./../routes/index');
