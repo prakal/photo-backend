@@ -5,5 +5,11 @@ html
   body
     | This renders our home page
     script(src='https://cdn.socket.io/socket.io-1.2.0.js')
+    script(src='https://code.jquery.com/jquery-1.11.3.min.js')
     script.
       var socket = io.connect();
+      socket.on('newData',function(data){
+      // append new data to html
+      console.log(data);
+      $('h1').append(data);
+      });
