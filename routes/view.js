@@ -17,8 +17,15 @@ router.get('/:number', function(req, res, next) {
 				.then(function(data){
 					console.log(data[0]);
 					// increase view count on photo based on primary key
-					var image = data[0].image_url
-		  		res.render('view',{'image':image});
+					if (data[0]){
+						// there is data present
+						var image = data[0].image_url
+			  		res.render('view',{'image':image});
+					}
+					else {
+						// no data present, render generic image
+						res.render('view',{'image':'http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg'});
+					}
 				});
 		})
 });
