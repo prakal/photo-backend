@@ -13,7 +13,7 @@ html
       console.log(data,document.URL);
       var end = parseInt(document.URL[document.URL.length-1]);
       // only perform append operation if url is /list.
-      if (end === NaN){
+      if (isNaN(end)){
       $('ul').append("<li>"+JSON.stringify(data)+"</li>");
       } else {
       // it is a number, so it is not /list/
