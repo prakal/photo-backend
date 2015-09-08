@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-
+app.set('view options', {
+    layout: false
+});
 
 // Routes
 var routes  = require('./../routes/index');
