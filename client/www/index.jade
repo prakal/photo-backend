@@ -10,7 +10,16 @@ html
       var socket = io.connect();
       socket.on('newData',function(data){
       // append new data to html
-      console.log(data);
+      console.log(data,document.URL);
+      var end = parseInt(document.URL[document.URL.length-1]);
+      // only perform append operation if url is /list.
+      if (end === NaN){
       $('ul').append("<li>"+JSON.stringify(data)+"</li>");
+      } else {
+      // it is a number, so it is not /list/
+      if (data.group_id === end){
+      $('ul').append("<li>"+JSON.stringify(data)+"</li>");
+      }
+      }
       });
     block mainContent
