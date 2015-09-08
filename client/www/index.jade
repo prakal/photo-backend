@@ -11,6 +11,6 @@ html
       socket.on('newData',function(data){
       // append new data to html
       console.log(data);
-      $('h1').append(data);
+      $('ul').append("<li>"+JSON.stringify(data)+"</li>");
       });
     block mainContent

@@ -1,3 +1,5 @@
 extends index
 block mainContent
-	h1!= message
+  ul
+    each val in json
+      li= JSON.stringify(val)
