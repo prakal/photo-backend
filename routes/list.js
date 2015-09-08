@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 	db.knex('photos')
 		.select('*')
 		.then(function(data){
-  		res.json(data);
+  		res.render('list', { message: JSON.stringify(data)});
 		})
 });
 
@@ -24,7 +24,6 @@ router.get('/:number', function(req, res, next) {
   		res.json(data);
 		})
 });
-
 
 
 module.exports = router;
