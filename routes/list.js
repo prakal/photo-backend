@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
 	db.knex('photos')
 		.select('*')
 		.then(function(data){
-			console.log(data);
   		res.render('list', { json: data});
 		})
 });
@@ -22,7 +21,7 @@ router.get('/:number', function(req, res, next) {
 		.where({'photos.group_id':req.url.slice(1)})
 		.select('*')
 		.then(function(data){
-  		res.json(data);
+  		res.render('list', { json: data});
 		})
 });
 

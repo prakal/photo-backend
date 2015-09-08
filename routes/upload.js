@@ -1,4 +1,5 @@
-// might need to escape url to prevent attacks
+// deprecated: might need to escape url to prevent attacks
+/*
 var io = require('socket.io').listen();
 var express = require('express');
 var router = express.Router();
@@ -19,3 +20,4 @@ router.post('/', function(req, res, next) {
 });
 
 module.exports = router;
+*/

@@ -51,13 +51,13 @@ app.post('/upload', function(req,res,next){
 	console.log('upload sidetrack');
 	console.log(req.body);
 	// write to database
-	db.knex.raw('INSERT INTO photos ("image_url","user_id","group_id") VALUES ('+"'"+req.body.image_url+"','"+req.body.user_id+"','"+req.body.group_id+"')")
+	db.knex.raw('INSERT INTO photos ("image_url","user_id","group_id") VALUES ('+"'"+req.body.image_url+"','"+req.body.user_id+"','"+req.body.group_id+"') RETURNING *")
 	  .then(function(returnData){
 	    // watch for event in which a client adds an image to the photos table.
 	    console.log('new data received. emitting to all clients');
 	    // emit a socket event newData from server to all clients to update their view to include new items
-	    io.emit('newData',req.body);
-	    res.json(returnData);
+	    io.emit('newData',returnData.rows[0]);
+	    res.json(returnData.rows[0]);
 	  });
 });
 app.use('/list', list);
