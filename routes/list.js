@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 	// provide entire photos table as a json object
 	db.knex('photos')
 		.select('*')
+		.orderBy('id')
 		.then(function(data){
   		res.render('list', { json: data});
 		})
@@ -20,6 +21,7 @@ router.get('/:number', function(req, res, next) {
 	db.knex('photos')
 		.where({'photos.group_id':req.url.slice(1)})
 		.select('*')
+		.orderBy('id')
 		.then(function(data){
   		res.render('list', { json: data});
 		})
