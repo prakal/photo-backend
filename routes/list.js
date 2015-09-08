@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
 	db.knex('photos')
 		.select('*')
 		.then(function(data){
-  		res.render('list', { message: JSON.stringify(data)});
+			console.log(data);
+  		res.render('list', { json: data});
 		})
 });
 
