@@ -17,7 +17,8 @@ router.get('/:number', function(req, res, next) {
 				.then(function(data){
 					console.log(data[0]);
 					// increase view count on photo based on primary key
-		  		res.end('<img src='+data[0].image_url+'>');
+					var image = data[0].image_url
+		  		res.render('view',{'image':image});
 				});
 		})
 });
