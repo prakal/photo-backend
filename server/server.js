@@ -65,6 +65,9 @@ app.post('/upload', function(req,res,next){
 		    // emit a socket event newData from server to all clients to update their view to include new items
 		    io.emit('newData',returnData.rows[0]);
 		    res.json(returnData.rows[0]);
+		  })
+		  .catch(function(error){
+		  	res.json(error);
 		  });
 	} else {
 		// if ID is not provided, then use SQL insert with new ID
@@ -76,6 +79,9 @@ app.post('/upload', function(req,res,next){
 		    // emit a socket event newData from server to all clients to update their view to include new items
 		    io.emit('newData',returnData.rows[0]);
 		    res.json(returnData.rows[0]);
+		  })
+		  .catch(function(error){
+		  	res.json(error);
 		  });
 	}
 });
