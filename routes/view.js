@@ -26,7 +26,10 @@ exports.view = function(io){
 							// no data present, render generic image
 							res.render('view',{'image':'http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg'});
 						}
-					});
+					})
+					.catch(function(error){
+							res.json(error);
+				  	});
 			});
 		
 	};
