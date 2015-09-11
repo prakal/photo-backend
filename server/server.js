@@ -18,7 +18,7 @@ app.set('view options', {
 
 // Routes
 var routes  = require('./../routes/index');
-var upload  = require('./../routes/upload');
+// var upload  = require('./../routes/upload');
 var list  = require('./../routes/list');
 var view  = require('./../routes/view');
 
