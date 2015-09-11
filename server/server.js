@@ -59,7 +59,7 @@ app.post('/upload', function(req,res,next){
 	// check if ID is provided. if it is, then do a SQL update into db
 	if (req.body.ID){
 		// write to database
-		db.knex.raw('UPDATE photos SET ("image_url","user_id","group_id") = ('+"'"+image_url+"','"+user_id+"','"+group_id+"') WHERE id = "+_.escape(req.body.ID)+" RETURNING *")
+		db.knex.raw('UPDATE photos SET ("image_url","user_id","group_id","views") = ('+"'"+image_url+"','"+user_id+"','"+group_id+"','0') WHERE id = "+_.escape(req.body.ID)+" RETURNING *")
 		  .then(function(returnData){
 		    // watch for event in which a client adds an image to the photos table.
 		    console.log('updated data received. emitting to all clients');
