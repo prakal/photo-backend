@@ -64,8 +64,15 @@ app.post('/upload', function(req,res,next){
 		    // watch for event in which a client adds an image to the photos table.
 		    console.log('updated data received. emitting to all clients');
 		    // emit a socket event newData from server to all clients to update their view to include new items
-		    io.emit('updatedData',returnData.rows[0]);
-		    res.json(returnData.rows[0]);
+		    // console.log('returnData',returnData.rows[0]);
+		    if (!returnData.rows[0]){
+		    	// if ID does not match any primary key in photos table, return an error instead, and emit to updated as an error
+		    	io.emit('updatedData',{'error':'primary key not correct. not added to database', 'ID':req.body.ID});
+		    	res.json({'error':'primary key not correct. not added to database', 'ID':req.body.ID});
+		    } else {
+			    io.emit('updatedData',returnData.rows[0]);
+			    res.json(returnData.rows[0]);
+		    }
 		  })
 		  .catch(function(error){
 		  	res.json(error);
