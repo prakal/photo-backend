@@ -1,5 +1,10 @@
 extends index
 block mainContent
+  script.
+    var socket = io.connect();
+    socket.on('updatedData',function(data){
+    // append new data to html
+    console.log(data,document.URL);
+    $('ul').append("<li>"+JSON.stringify(data)+"</li>");
+    });
   ul
-    each val in json
-      li= JSON.stringify(val)
