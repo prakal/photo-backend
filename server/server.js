@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var express = require('express');
 var http 	= require('http');
 var app 	= express();
@@ -50,8 +51,10 @@ app.use('/', routes);
 app.post('/upload', function(req,res,next){
 	console.log('upload sidetrack');
 	console.log(req.body);
+	// use underscore escape to escape image_url
+	var image_url = _.escape(req.body.image_url);
 	// write to database
-	db.knex.raw('INSERT INTO photos ("image_url","user_id","group_id") VALUES ('+"'"+req.body.image_url+"','"+req.body.user_id+"','"+req.body.group_id+"') RETURNING *")
+	db.knex.raw('INSERT INTO photos ("image_url","user_id","group_id") VALUES ('+"'"+image_url+"','"+req.body.user_id+"','"+req.body.group_id+"') RETURNING *")
 	  .then(function(returnData){
 	    // watch for event in which a client adds an image to the photos table.
 	    console.log('new data received. emitting to all clients');
