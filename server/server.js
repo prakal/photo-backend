@@ -30,14 +30,14 @@ app.set('view engine', 'jade');
 
 app.use(express.static(path.join(__dirname, '../client/www')));
 
-var server = app.listen(process.env.PORT || 3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+app.server = app.listen(process.env.PORT || 3000, function () {
+  // var host = server.address().address;
+  // var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  // console.log('Example app listening at http://%s:%s', host, port);
 });
 
-var io 		= require('socket.io').listen(server);
+var io 		= require('socket.io').listen(app.server);
 // socket.io code
 io.on('connection', function(socket){
   console.log('a user connected');
@@ -87,7 +87,7 @@ app.post('/upload', function(req,res,next){
 	}
 });
 app.use('/list', list);
-app.use('/view', view);
+app.get('/view/:number', view.view(io));
 app.use('/updates', updates);
 
 module.exports = app;
